@@ -46,6 +46,27 @@ contract Guestbook {
         emit MessageEdited(messageCount -1, msg.sender);
     }
 
+    function readMessage(uint _id) public view returns (string memory, string memory) {
+        Message memory m = messages[_id];
+        return (m.title, m.text);
+    }
+
+    function readLatestMessage() public view returns (string memory, string memory) {
+        require(messageCount > 0, "No messages yet.");
+        Message memory m = messages[messageCount - 1];
+        return (m.title, m.text);
+    }
+
+    function getMessage(uint _id) public returns(string memory, string memory) {
+        Message memory m = messages[_id];
+        return (m.title, m.text);
+    }
+
+    function deleteMessage(uint _id) public {
+        Message storage m = messages[_id];
+        require(msg.sender == m.author, "Only author can delete");
+        delete messages[_id];
+    }
 
     // checking if the input string are empty
     // ensure at least one field is not empty
