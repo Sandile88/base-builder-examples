@@ -57,10 +57,6 @@ contract Guestbook {
         return (m.title, m.text);
     }
 
-    function getMessage(uint _id) public returns(string memory, string memory) {
-        Message memory m = messages[_id];
-        return (m.title, m.text);
-    }
 
     function deleteMessage(uint _id) public {
         Message storage m = messages[_id];
