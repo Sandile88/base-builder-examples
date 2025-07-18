@@ -30,21 +30,21 @@ const MessageCard: React.FC<MessageCardProps> = ({
   };
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow ${
-      isLatest ? 'ring-2 ring-blue-500 bg-blue-50' : ''
+    <div className={`bg-[#0b3238]/60 backdrop-blur-sm border hover:bg-[#0b3238]/80 rounded-xl p-6 transition-all duration-300 ${
+      isLatest ? 'border-[#cde2eb]/50 bg-[#2c5d66]/20' : 'border-[#2c5d66]/30 hover:border-[#6f99a5]/50'
     }`}>
       {isLatest && (
-        <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium inline-block mb-3">
+        <div className="bg-[#cde2eb] text-[#041416] px-3 py-1 rounded-full text-xs font-medium inline-block mb-3">
           Latest Message
         </div>
       )}
       
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center space-x-2">
-          <User size={16} className="text-gray-500" />
-          <span className="text-sm text-gray-600">{formatAddress(message.author)}</span>
+          <User size={16} className="text-[#6f99a5]" />
+          <span className="text-sm text-[#6f99a5]">{formatAddress(message.author)}</span>
           {isOwner && (
-            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+            <span className="bg-[#2c5d66]/60 text-[#cde2eb] px-2 py-1 rounded-full text-xs font-medium  border border-[#6f99a5]/30">
               You
             </span>
           )}
@@ -54,14 +54,14 @@ const MessageCard: React.FC<MessageCardProps> = ({
           <div className="flex space-x-2">
             <button
               onClick={() => onEdit(message)}
-              className="p-2 text-blue-500 hover:bg-blue-100 rounded-lg transition-colors"
+              className="p-2 text-[#cde2eb] hover:bg-[#2c5d66]/60 rounded-lg transition-all duration-300 border border-transparent hover:border-[#6f99a5]/30"
               title="Edit message"
             >
               <Edit3 size={16} />
             </button>
             <button
               onClick={() => onDelete(message.id)}
-              className="p-2 text-red-500 hover:bg-red-100 rounded-lg transition-colors"
+              className="p-2 text-[#6f99a5] hover:bg-[#041416]/60 hover:text-[#cde2eb] rounded-lg transition-all duration-300 border border-transparent hover:border-[#6f99a5]/30"
               title="Delete message"
             >
               <Trash2 size={16} />
@@ -71,11 +71,11 @@ const MessageCard: React.FC<MessageCardProps> = ({
       </div>
 
       {message.title && (
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">{message.title}</h3>
+        <h3 className="text-lg font-semibold text-[#cde2eb] mb-2">{message.title}</h3>
       )}
       
       {message.text && (
-        <p className="text-gray-600 leading-relaxed">{message.text}</p>
+        <p className="text-[#6f99a5] leading-relaxed">{message.text}</p>
       )}
     </div>
   );

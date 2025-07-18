@@ -176,21 +176,21 @@ export default function App() {
 
 
   return (
-    <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
-      <header className="pt-4 pr-4">
+    <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-[#041416] via-[#0b3238] to-[#2c5d66]">
+      <header className="bg-[#041416]/80 backdrop-blur-sm border-b border-[#2c5d66]/30 pt-4 pr-4">
         <div className="flex justify-end">
           <div className="wallet-container">
             <Wallet>
-              <ConnectWallet>
+              <ConnectWallet className="flex items-center space-x-2 bg-[#2c5d66] hover:bg-[#6f99a5] text-[#cde2eb] px-6 py-3 rounded-lg transition-all duration-300 font-medium border border-[#6f99a5]/30 hover:border-[#cde2eb]/50">
                 <Avatar className="h-6 w-6" />
                 <Name />
               </ConnectWallet>
-              <WalletDropdown>
-                <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+              <WalletDropdown className="bg-[#0b3238] border border-[#2c5d66]/30 rounded-lg shadow-xl">
+                <Identity className="px-4 pt-3 pb-2 text-[#cde2eb]" hasCopyAddressOnClick>
                   <Avatar />
                   <Name />
-                  <Address />
-                  <EthBalance />
+                  <Address className="text-[#6f99a5]" />
+                  <EthBalance className="text-[#6f99a5]" />
                 </Identity>
                 <WalletDropdownLink
                   icon="wallet"
@@ -200,7 +200,7 @@ export default function App() {
                 >
                   Wallet
                 </WalletDropdownLink>
-                <WalletDropdownDisconnect />
+                <WalletDropdownDisconnect className="text-[#6f99a5] hover:bg-[#041416]/60 hover:text-[#cde2eb]" />
               </WalletDropdown>
             </Wallet>
           </div>
@@ -212,9 +212,9 @@ export default function App() {
           {!isConnected ? (
 
             <div className="text-center py-16">
-              <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-auto">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome to the Guestbook</h2>
-                <p className="text-gray-600 mb-6">
+              <div className="rounded-xl shadow-lg p-8 max-w-md mx-auto">
+                <h2 className="text-2xl font-bold text-[#cde2eb] mb-2">Welcome to the Guestbook</h2>
+                <p className="text-[#6f99a5] mb-6">
                   Connect your wallet to start reading and writing messages on the blockchain.
                 </p>
               </div>
@@ -225,24 +225,24 @@ export default function App() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   
-                  <div className="bg-white rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
                     <div>
-                      <p className="text-sm text-gray-600">Total Messages</p>
-                      <p className="text-2xl font-bold text-gray-800">{messageCount}</p>
+                      <p className="text-sm text-[#6f99a5]">Total Messages</p>
+                      <p className="text-2xl font-bold text-[#cde2eb]">{messageCount}</p>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
                     <div>
-                      <p className="text-sm text-gray-600">Your Messages</p>
-                      <p className="text-2xl font-bold text-gray-800">{userMessages.length}</p>
+                      <p className="text-sm text-[#6f99a5]">Your Messages</p>
+                      <p className="text-2xl font-bold text-[#cde2eb]">{userMessages.length}</p>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
                     <div>
-                      <p className="text-sm text-gray-600">Connected</p>
-                      <p className="text-lg font-bold text-gray-800">
+                      <p className="text-sm text-[#6f99a5]">Connected</p>
+                      <p className="text-lg font-bold text-[#cde2eb]">
                         {address ? formatAddress(address) : '0x000...0000'}
                       </p>
                     </div>
@@ -260,15 +260,15 @@ export default function App() {
               <div className="lg:w-1/2 w-full">
                 <div className="h-full">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-4">All Messages</h2>
+                    <h2 className="text-xl font-semibold text-[#cde2eb] mb-4">All Messages</h2>
 
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={toggleBulkDeleteMode}
-                        className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-300 border ${
                           bulkDeleteMode
-                            ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-[#041416]/60 text-[#cde2eb] border-[#6f99a5]/50 hover:bg-[#041416]/80'
+                            : 'bg-[#2c5d66]/60 text-[#cde2eb] border-[#6f99a5]/30 hover:bg-[#2c5d66]/80'
                         }`}
                       >
                         {bulkDeleteMode ? 'Cancel' : 'Select Multiple'}
@@ -277,7 +277,7 @@ export default function App() {
                         <>
                           <button
                             onClick={handleSelectAll}
-                            className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-200 transition-colors"
+                            className="px-3 py-1 bg-[#2c5d66] text-[#cde2eb] rounded-lg text-sm font-medium hover:bg-[#6f99a5] transition-all duration-300 border border-[#6f99a5]/30"
                           >
                             {selectedMessages.length === userMessages.length ? 'Deselect All' : 'Select All'}
                           </button>
@@ -285,7 +285,7 @@ export default function App() {
                             <button
                               onClick={handleBulkDelete}
                               disabled={isDeletingBulk}
-                              className="flex items-center space-x-1 px-3 py-1 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 disabled:bg-red-300 transition-colors"
+                              className="flex items-center space-x-1 px-3 py-1  bg-[#041416] text-[#cde2eb] rounded-lg text-sm font-medium hover:bg-[#0b3238] disabled:bg-[#041416]/50 transition-all duration-300 border border-[#6f99a5]/30"
                             >
                               <Trash2 size={14} />
                               <span>
@@ -301,7 +301,7 @@ export default function App() {
                   <input
                     type="text"
                     placeholder="Search messages by title or text..."
-                    className="w-full mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="bg-[#041416]/60 w-full mb-4 px-4 py-2 border border-[#2c5d66]/50 rounded-lg focus:ring-2 focus:ring-[#6f99a5] focus:border-[#cde2eb] focus:outline-none transition-all text-[#cde2eb] placeholder-[#6f99a5]/70"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -309,7 +309,7 @@ export default function App() {
                  {checkingMessages || loadingAction ? (
                   <div className="flex flex-col items-center justify-center py-12 space-y-2">
                     <LoadingSpinner />
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-[#6f99a5] text-sm">
                       {checkingMessages
                         ? 'Checking for messages...'
                         : getLoadingText()}
@@ -317,15 +317,15 @@ export default function App() {
                   </div>
                   ) : messages.length === 0 ? (
                     <div className="text-center py-12">
-                      <p className="text-gray-500">No messages yet. Be the first to write one!</p>
+                      <p className="text-[#6f99a5]">No messages yet. Be the first to write one!</p>
                     </div>
                   ) : filteredMessages.length === 0 ? (
                     <div className="text-center py-12">
-                      <p className="text-gray-500">No messages found matching "{searchQuery}"</p>
-                      <p className="text-gray-400 text-sm mt-2">Try adjusting your search terms</p>
+                      <p className="text-[#6f99a5]">No messages found matching "{searchQuery}"</p>
+                      <p className="text-[#6f99a5]/70 text-sm mt-2">Try adjusting your search terms</p>
                     </div>
                   ) : (
-                    <div className="max-h-96 overflow-hidden hover:overflow-y-auto transition-all duration-200 space-y-4 pr-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500">
+                    <div className="max-h-96 overflow-hidden hover:overflow-y-auto transition-all duration-200 space-y-4 pr-2 scrollbar-thin scrollbar-thumb-[#2c5d66] scrollbar-track-[#041416] hover:scrollbar-thumb-[#6f99a5]">
                       {loadingAction === 'saving' ? (
                         <div className="flex justify-center py-8">
                           <LoadingSpinner />
@@ -340,12 +340,12 @@ export default function App() {
                                 <div className="absolute top-2 left-2 z-10">
                                   <button
                                     onClick={() => handleMessageSelect(message.id)}
-                                    className="p-1 rounded hover:bg-gray-100 transition-colors"
+                                    className="p-1 rounded hover:bg-[#2c5d66]/60 transition-all duration-300"
                                   >
                                     {selectedMessages.includes(message.id) ? (
-                                      <CheckSquare size={20} className="text-blue-500" />
+                                      <CheckSquare size={20} className="text-[#cde2eb]" />
                                     ) : (
-                                      <Square size={20} className="text-gray-400" />
+                                      <Square size={20} className="text-[#6f99a5]" />
                                     )}
                                   </button>
                                 </div>
