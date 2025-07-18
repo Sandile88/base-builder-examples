@@ -177,9 +177,9 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-[#041416] via-[#0b3238] to-[#2c5d66]">
-      <header className="bg-[#041416]/80 backdrop-blur-sm border-b border-[#2c5d66]/30 pt-4 pr-4">
+      <header className="bg-[#041416]/80 backdrop-blur-sm border-b border-[#2c5d66]/30 pt-2 pr-4">
         <div className="flex justify-end">
-          <div className="wallet-container">
+          <div className="wallet-container mb-2">
             <Wallet>
               <ConnectWallet className="flex items-center space-x-2 bg-[#2c5d66] hover:bg-[#6f99a5] text-[#cde2eb] px-6 py-3 rounded-lg transition-all duration-300 font-medium border border-[#6f99a5]/30 hover:border-[#cde2eb]/50">
                 <Avatar className="h-6 w-6" />
@@ -225,21 +225,21 @@ export default function App() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   
-                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300">
                     <div>
                       <p className="text-sm text-[#6f99a5]">Total Messages</p>
                       <p className="text-2xl font-bold text-[#cde2eb]">{messageCount}</p>
                     </div>
                   </div>
 
-                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300">
                     <div>
                       <p className="text-sm text-[#6f99a5]">Your Messages</p>
                       <p className="text-2xl font-bold text-[#cde2eb]">{userMessages.length}</p>
                     </div>
                   </div>
 
-                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300 rounded-xl shadow-lg p-6">
+                  <div className="bg-[#0b3238]/60 backdrop-blur-sm rounded-xl border border-[#2c5d66]/30 p-6 hover:bg-[#0b3238]/80 transition-all duration-300">
                     <div>
                       <p className="text-sm text-[#6f99a5]">Connected</p>
                       <p className="text-lg font-bold text-[#cde2eb]">
