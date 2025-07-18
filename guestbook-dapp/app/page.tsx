@@ -44,7 +44,6 @@ export default function App() {
     messages,
     messageCount,
     latestMessage,
-    loading,
     action: loadingAction,
     writeMessage,
     editMessage,
@@ -321,7 +320,7 @@ export default function App() {
                     </div>
                   ) : filteredMessages.length === 0 ? (
                     <div className="text-center py-12">
-                      <p className="text-[#6f99a5]">No messages found matching "{searchQuery}"</p>
+                      <p className="text-[#6f99a5]">No messages found matching &quot;{searchQuery}&quot;</p>
                       <p className="text-[#6f99a5]/70 text-sm mt-2">Try adjusting your search terms</p>
                     </div>
                   ) : (

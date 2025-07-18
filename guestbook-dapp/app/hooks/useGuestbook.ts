@@ -13,7 +13,7 @@ interface Message {
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as  `0x${string}`;
 
 export const useGuestbook = () => {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const publicClient = usePublicClient();
   const { data: walletClient } = useWalletClient();
   
