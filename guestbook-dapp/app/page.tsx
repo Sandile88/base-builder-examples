@@ -77,8 +77,40 @@ export default function App() {
         return await writeMessage(title, text);
       }
     } finally {
+    }
   };
 
+  const handleEdit = (message: Message) => {
+    setEditingMessage(message);
+    setBulkDeleteMode(false);
+    setSelectedMessages([]);
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      const success = await deleteMessage(id);
+      if (success) {
+        if (editingMessage?.id === id) {
+          setEditingMessage(null);
+        }
+        await loadMessages();
+      }
+      return success;
+    } finally {
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingMessage(null);
+  };
+
+  const handleMessageSelect = (messageId: number) => {
+    setSelectedMessages(prev =>
+      prev.includes(messageId)
+        ? prev.filter(id => id !== messageId)
+        : [...prev, messageId]
+    );
+  };
 
 
   return (
