@@ -37,6 +37,50 @@ export default function App() {
   const [selectedMessages, setSelectedMessages] = useState<number[]>([]);
   const [bulkDeleteMode, setBulkDeleteMode] = useState(false);
   const [isDeletingBulk, setIsDeletingBulk] = useState(false);
+  const [checkingMessages, setCheckingMessages] = useState(true);
+
+
+  const {
+    messages,
+    messageCount,
+    latestMessage,
+    loading,
+    action: loadingAction,
+    writeMessage,
+    editMessage,
+    deleteMessage,
+    loadMessages
+  } = useGuestbook();
+
+  // loading messages after connecting
+  useEffect(() => {
+    if (isConnected) {
+      setCheckingMessages(true);
+      const load = async () => {
+        await loadMessages();
+        setCheckingMessages(false);
+      };
+      load();
+    }
+  }, [isConnected]);
+
+  const handleSubmit = async (title: string, text: string) => {
+    try {
+      if (editingMessage) {
+        const success = await editMessage(editingMessage.id, title, text);
+        if (success) {
+          await loadMessages();
+          setEditingMessage(null);
+        }
+        return success;
+      } else {
+        return await writeMessage(title, text);
+      }
+    } finally {
+  };
+
+
+
   return (
     <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
       <header className="pt-4 pr-4">
