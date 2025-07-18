@@ -151,6 +151,29 @@ export default function App() {
     address && msg.author.toLowerCase() === address.toLowerCase()
   );
 
+   const formatAddress = (address: string) => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
+
+  const filteredMessages = messages.filter(
+    msg =>
+      msg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      msg.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const getLoadingText = () => {
+    switch (loadingAction) {
+      case 'saving':
+        return 'Saving message...';
+      case 'updating':
+        return 'Updating message...';
+      case 'deleting':
+        return 'Deleting message...';
+      default:
+        return '';
+    }
+  };
+
 
   return (
     <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
