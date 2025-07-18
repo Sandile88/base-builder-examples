@@ -112,6 +112,45 @@ export default function App() {
     );
   };
 
+  const handleSelectAll = () => {
+    const userMessageIds = userMessages.map(msg => msg.id);
+    if (selectedMessages.length === userMessageIds.length) {
+      setSelectedMessages([]);
+    } else {
+      setSelectedMessages(userMessageIds);
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedMessages.length === 0) return;
+
+    setIsDeletingBulk(true);
+    const deletePromises = selectedMessages.map(id => deleteMessage(id));
+
+    try {
+      await Promise.all(deletePromises);
+      setSelectedMessages([]);
+      setBulkDeleteMode(false);
+      await loadMessages();
+    } catch (error) {
+      console.error('Error deleting messages:', error);
+    } finally {
+      setIsDeletingBulk(false);
+    }
+  };
+
+  const toggleBulkDeleteMode = () => {
+    setBulkDeleteMode(!bulkDeleteMode);
+    setSelectedMessages([]);
+    if (editingMessage) {
+      setEditingMessage(null);
+    }
+  };
+  
+  const userMessages = messages.filter(msg =>
+    address && msg.author.toLowerCase() === address.toLowerCase()
+  );
+
 
   return (
     <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
