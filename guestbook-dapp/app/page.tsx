@@ -21,6 +21,8 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { useGuestbook } from './hooks/useGuestbook';
 import { useEffect, useState } from 'react';
 import { Trash2, CheckSquare, Square } from 'lucide-react';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { baseSepolia } from 'viem/chains';
 
 interface Message {
   id: number;
@@ -175,6 +177,9 @@ export default function App() {
 
 
   return (
+    <OnchainKitProvider
+    apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+    chain={baseSepolia}>
     <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-[#041416] via-[#0b3238] to-[#2c5d66]">
       <header className="bg-[#041416]/80 backdrop-blur-sm border-b border-[#2c5d66]/30 pt-2 pr-4">
         <div className="flex justify-end">
@@ -370,5 +375,6 @@ export default function App() {
         </div>
       </main>
     </div>
+    </OnchainKitProvider>
   );
 }
