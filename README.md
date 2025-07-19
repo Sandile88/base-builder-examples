@@ -11,6 +11,7 @@ This repository is a collection of **mini projects** I will be building while ex
 | Project        | Description                                 |
 |----------------|---------------------------------------------|
 | [OnChainKit App](./onchainkit-app)      | A simple onchain counter built with OnchainKit + Foundry |
+| [Guestbook dApp](./guestbook-dapp/)     | A simple guestbook mini app where you can do basic CRUD operations
 | ...            | More coming soon!                            |
 
 ---
