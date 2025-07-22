@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
 import { getContract } from 'viem';
-import guestbookAbi from '../../contracts/out/Guestbook.sol/Guestbook.json';
+// import guestbookAbi from '../../contracts/out/Guestbook.sol/Guestbook.json';
+import {abi as guestbookAbi} from "@/contracts/out/Guestbook.sol/Guestbook.json";
 
 interface Message {
   id: number;
@@ -10,8 +11,10 @@ interface Message {
   text: string;
 }
 
-const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as  `0x${string}`;
-// const CONTRACT_ADDRESS = "0x4F3fe5DE3E79c13a3390Def1e1B11824736cFd1A";
+// const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as  `0x${string}`;
+console.log("GUESTBOOK ABI", guestbookAbi);
+
+const CONTRACT_ADDRESS = "0x4F3fe5DE3E79c13a3390Def1e1B11824736cFd1A";
 
 export const useGuestbook = () => {
   const { isConnected } = useAccount();
@@ -28,14 +31,14 @@ export const useGuestbook = () => {
   // creating contract instance for reading it
   const contract = publicClient && getContract({
     address: CONTRACT_ADDRESS,
-    abi: guestbookAbi.abi,
+    abi: guestbookAbi,
     client: publicClient,
   });
 
   // creating contract instance for writing
   const writeContract = walletClient && getContract({
     address: CONTRACT_ADDRESS,
-    abi: guestbookAbi.abi,
+    abi: guestbookAbi,
     client: walletClient,
   });
 
