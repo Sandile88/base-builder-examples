@@ -11,6 +11,7 @@ interface Message {
 }
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as  `0x${string}`;
+// const CONTRACT_ADDRESS = "0x4F3fe5DE3E79c13a3390Def1e1B11824736cFd1A";
 
 export const useGuestbook = () => {
   const { isConnected } = useAccount();

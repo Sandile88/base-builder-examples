@@ -183,13 +183,13 @@ export default function App() {
     <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-[#041416] via-[#0b3238] to-[#2c5d66]">
       <header className="bg-[#041416]/80 backdrop-blur-sm border-b border-[#2c5d66]/30 pt-2 pr-4">
         <div className="flex justify-end">
-          <div className="wallet-container mb-2">
+          <div className="wallet-container mb-2 relative">
             <Wallet>
               <ConnectWallet className="flex items-center space-x-2 bg-[#2c5d66] hover:bg-[#6f99a5] text-[#cde2eb] px-6 py-3 rounded-lg transition-all duration-300 font-medium border border-[#6f99a5]/30 hover:border-[#cde2eb]/50">
                 <Avatar className="h-6 w-6" />
                 <Name />
               </ConnectWallet>
-              <WalletDropdown className="bg-[#0b3238] border border-[#2c5d66]/30 rounded-lg shadow-xl">
+              <WalletDropdown className="z-50 bg-[#0b3238] border border-[#2c5d66]/30 rounded-lg shadow-xl">
                 <Identity className="px-4 pt-3 pb-2 text-[#cde2eb]" hasCopyAddressOnClick>
                   <Avatar />
                   <Name />
