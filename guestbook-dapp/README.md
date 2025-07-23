@@ -90,6 +90,9 @@ function readMessage(uint256 index) public view returns (string memory, string m
 function editMessage(uint256 index, string memory newTitle, string memory newContent) public
 function deleteMessage(uint256 index) public
 ```
+
+💡 **Note on DELETE operation:** The `delete` function doesn't actually remove data from the blockchain (this is impossible). The original transaction logs remain permanently. The delete operation only removes the message from the current UI state.
+
 To deploy:
 
 ```bash
