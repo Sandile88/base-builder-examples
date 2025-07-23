@@ -77,22 +77,33 @@ export default function App() {
       </header>
 
       <main className="flex flex-grow items-center justify-center">
-        <div className="w-full max-w-4xl p-4">
-          <div className="mx-auto mb-6 w-1/3">
-            <Transaction
-              isSponsored={true}
-              calls={calls}
-              onStatus={handleOnStatus}
-              >
-              <TransactionButton />
-              <TransactionSponsor />
-              <TransactionToast>
-                <TransactionToastIcon />
-                <TransactionToastLabel />
-                <TransactionToastAction />
-              </TransactionToast>
-            </Transaction>            
-          </div>
+        <div className="w-full flex justify-center items-center">
+          {!isConnected ? (
+            <div className="text-center">
+              <Wallet>
+              <ConnectWallet>
+                <Avatar className="h-6 w-6" />
+                <Name />
+              </ConnectWallet>
+            </Wallet>
+            </div>
+          ) : (
+            <div className="text-center">
+              <Transaction
+                isSponsored={true}
+                calls={calls}
+                onStatus={handleOnStatus}
+                >
+                <TransactionButton />
+                <TransactionSponsor />
+                <TransactionToast>
+                  <TransactionToastIcon />
+                  <TransactionToastLabel />
+                  <TransactionToastAction />
+                </TransactionToast>
+              </Transaction>            
+            </div>
+          )}
         </div>
       </main>
     </div>
