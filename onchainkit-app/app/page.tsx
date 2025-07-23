@@ -40,7 +40,27 @@ export default function App() {
   return (
     <OnchainKitProvider
     apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-    chain={baseSepolia}>
+    chain={baseSepolia}
+    config={{
+      paymaster: process.env.PAYMASTER_ENDPOINT,
+      appearance: {
+      name: 'Tally App',        
+      // logo: 'https://your-logo.com',
+      mode: 'dark',                 
+      theme: 'default',       
+    },
+    wallet: { 
+      display: 'modal', 
+      termsUrl: 'https://...', 
+      privacyUrl: 'https://...', 
+      supportedWallets: { 
+        rabby: true, 
+        trust: true, 
+        frame: true, 
+      }, 
+      },
+    }}
+    >
 
     <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
       <header className="pt-4 pr-4">
